@@ -15,5 +15,12 @@ public class BoxMover : MonoBehaviour {
 	void Update () {
 		Debug.Log("Strafespeed = " + strafeSpeed);	
 		Debug.Log ("Speed = " + speed);
+
+		float controlledSpeed = Input.GetAxis ("Vertical") * speed;
+		float controlledStrafeSpeed = Input.GetAxis ("Horizontal") * strafeSpeed;
+
+		Debug.Log ("Force (Speed,Strafespeed) = (" + controlledSpeed + ", " + controlledStrafeSpeed + ")");
+
+		rigidbody.AddForce (controlledSpeed, 0, controlledStrafeSpeed);
 	}
 }
